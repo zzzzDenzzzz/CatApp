@@ -4,8 +4,8 @@
 
 <div class="text-center">
     <h1 class="display-4">Cats search</h1>
-    <form class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Breed" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+    <form asp-action="Search" asp-controller="Home" method="get" class="input-group mb-3">
+        <input name="breed" type="text" class="form-control" placeholder="Breed" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
     </form>
 </div>

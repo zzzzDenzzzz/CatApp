@@ -1,4 +1,5 @@
 ﻿using CatApp.Models;
+using CatApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,11 +7,11 @@ namespace CatApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly CatApiService catApiService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(CatApiService catApiService)
         {
-            _logger = logger;
+            this.catApiService = catApiService;
         }
 
         public IActionResult Index()
@@ -20,6 +21,15 @@ namespace CatApp.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public async Task<IActionResult> Search(string breed)
+        {
+            var result = await catApiService.SearchByBreedAsync(breed);
+
+            ViewBag.Result = result;
+            ViewBag.searchBreed = breed;
             return View();
         }
 

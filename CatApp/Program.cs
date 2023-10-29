@@ -1,6 +1,10 @@
+using CatApp.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<CatApiService>();
 
 var app = builder.Build();
 
